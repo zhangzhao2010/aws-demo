@@ -1,0 +1,55 @@
+# 编译生成的文件
+*.class
+
+# 打包文件
+*.jar
+*.war
+*.ear
+*.zip
+*.tar.gz
+*.rar
+
+# 日志文件
+*.log
+logs/
+
+# 敏感配置文件（包含AWS凭证）
+config.properties
+*.properties
+
+# 虚拟机崩溃日志
+hs_err_pid*
+
+# IDE相关文件和目录
+.idea/
+.vscode/
+*.iml
+*.iws
+*.ipr
+.settings/
+.classpath
+.project
+.metadata
+bin/
+tmp/
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+# Maven构建目录
+target/
+
+# Gradle构建目录
+.gradle/
+build/
+
+# 系统相关文件
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# 临时文件
+temp/
+tmp/
