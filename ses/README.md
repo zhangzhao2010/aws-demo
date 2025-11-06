@@ -21,7 +21,7 @@
 
 ### 1. 配置
 
-编辑 `config.properties` 文件，填入您的AWS凭证和邮件信息：
+创建 `config.properties` 文件，填入您的AWS凭证和邮件信息：
 
 ```properties
 # AWS认证信息
