@@ -1,0 +1,22 @@
+{
+  "Records": [
+    {
+      "EventSource": "aws:sns",
+      "EventVersion": "1.0",
+      "EventSubscriptionArn": "arn:aws:sns:us-east-1:123456789012:ses-events-topic:abc-def-ghi",
+      "Sns": {
+        "Type": "Notification",
+        "MessageId": "95df01b4-ee98-5cb9-9903-4c221d41eb5e",
+        "TopicArn": "arn:aws:sns:us-east-1:123456789012:ses-events-topic",
+        "Subject": null,
+        "Message": "{\"notificationType\":\"Delivery\",\"mail\":{\"timestamp\":\"2025-01-18T10:00:00.000Z\",\"source\":\"sender@example.com\",\"sourceArn\":\"arn:aws:ses:us-east-1:123456789012:identity/example.com\",\"sendingAccountId\":\"123456789012\",\"messageId\":\"01020187f2c4f5e7-a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d-000000\",\"destination\":[\"recipient@example.com\"],\"headersTruncated\":false,\"headers\":[{\"name\":\"From\",\"value\":\"sender@example.com\"},{\"name\":\"To\",\"value\":\"recipient@example.com\"},{\"name\":\"Subject\",\"value\":\"Test Email\"}],\"commonHeaders\":{\"from\":[\"sender@example.com\"],\"to\":[\"recipient@example.com\"],\"messageId\":\"01020187f2c4f5e7-a1b2c3d4-e5f6-4a5b-8c9d-0e1f2a3b4c5d-000000\",\"subject\":\"Test Email\"},\"tags\":{\"ses:configuration-set\":[\"ses-config-set\"],\"ses:source-ip\":[\"203.0.113.1\"],\"ses:from-domain\":[\"example.com\"],\"ses:caller-identity\":[\"ses-user\"]}},\"delivery\":{\"timestamp\":\"2025-01-18T10:00:01.000Z\",\"processingTimeMillis\":1000,\"recipients\":[\"recipient@example.com\"],\"smtpResponse\":\"250 2.0.0 OK\",\"reportingMTA\":\"a8-100.smtp-out.amazonses.com\"}}",
+        "Timestamp": "2025-01-18T10:00:02.000Z",
+        "SignatureVersion": "1",
+        "Signature": "ExampleSignature==",
+        "SigningCertUrl": "https://sns.us-east-1.amazonaws.com/SimpleNotificationService-example.pem",
+        "UnsubscribeUrl": "https://sns.us-east-1.amazonaws.com/?Action=Unsubscribe&SubscriptionArn=arn:aws:sns:us-east-1:123456789012:ses-events-topic:abc-def-ghi",
+        "MessageAttributes": {}
+      }
+    }
+  ]
+}
