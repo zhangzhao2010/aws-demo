@@ -43,8 +43,8 @@ This will create three JSONL files:
 ## Configuration
 
 The script uses the following default configuration:
-- **Bucket**: `sagemaker-us-east-1-096331270838`
-- **Bucket Owner**: `096331270838`
+- **Bucket**: `sagemaker-us-east-1-xxxx`
+- **Bucket Owner**: `xxxx`
 - **S3 Prefix**: `nova-finetune`
 - **Categories**: `neutral`, `porn`, `sexy`
 
@@ -74,8 +74,8 @@ Each line in the JSONL files contains a conversation sample in Bedrock format:
             "format": "jpg",
             "source": {
               "s3Location": {
-                "uri": "s3://sagemaker-us-east-1-096331270838/nova-finetune/sexy/sexy_0001.jpg",
-                "bucketOwner": "096331270838"
+                "uri": "s3://sagemaker-us-east-1-xxxx/nova-finetune/sexy/sexy_0001.jpg",
+                "bucketOwner": "xxxx"
               }
             }
           }
