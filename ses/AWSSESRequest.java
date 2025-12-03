@@ -202,6 +202,21 @@ public class AWSSESRequest {
      * @return 是否发送成功
      */
     public boolean sendEmail(String from, String to, String subject, String body) {
+        // 调用重载方法，不指定ConfigurationSetName
+        return sendEmail(from, to, subject, body, null);
+    }
+
+    /**
+     * 发送邮件（支持配置集）
+     *
+     * @param from 发件人邮箱
+     * @param to 收件人邮箱
+     * @param subject 邮件主题
+     * @param body 邮件内容
+     * @param configurationSetName 配置集名称（可选，若不需要可传null）
+     * @return 是否发送成功
+     */
+    public boolean sendEmail(String from, String to, String subject, String body, String configurationSetName) {
         try {
             // 构建请求参数
             TreeMap<String, String> params = new TreeMap<>();
@@ -212,12 +227,20 @@ public class AWSSESRequest {
             params.put("Message.Body.Text.Data", body);
             params.put("Version", API_VERSION);
 
+            // 如果指定了配置集，则添加到请求参数中
+            if (configurationSetName != null && !configurationSetName.isEmpty()) {
+                params.put("ConfigurationSetName", configurationSetName);
+            }
+
             if (DEBUG_MODE) {
                 System.out.println("===== 发送邮件请求 =====");
                 System.out.println("发件人: " + from);
                 System.out.println("收件人: " + to);
                 System.out.println("主题: " + subject);
                 System.out.println("内容: " + body);
+                if (configurationSetName != null && !configurationSetName.isEmpty()) {
+                    System.out.println("配置集: " + configurationSetName);
+                }
             }
 
             // 发送请求并获取响应
