@@ -29,7 +29,8 @@ def lambda_handler(event, context):
     try:
         # 验证配置
         Config.validate()
-        logger.info(f"API Endpoint: {Config.API_ENDPOINT}, Timeout: {Config.API_TIMEOUT}s")
+        logger.info(
+            f"API Endpoint: {Config.API_ENDPOINT}, Timeout: {Config.API_TIMEOUT}s")
 
         # 处理 SNS 记录
         for record in event.get('Records', []):
@@ -63,7 +64,8 @@ def process_sns_record(record):
         message_id = sns_message.get('MessageId', 'unknown')
         timestamp = sns_message.get('Timestamp', 'unknown')
 
-        logger.info(f"收到 SNS 消息 - Type: {message_type}, MessageId: {message_id}")
+        logger.info(
+            f"收到 SNS 消息 - Type: {message_type}, MessageId: {message_id}")
 
         # 处理订阅确认
         if message_type == 'SubscriptionConfirmation':
@@ -81,7 +83,8 @@ def process_sns_record(record):
             ses_event = json.loads(sns_message.get('Message', '{}'))
             event_type = ses_event.get('notificationType', 'unknown')
 
-            logger.info(f"收到 SES 事件 - Type: {event_type}, MessageId: {message_id}, Timestamp: {timestamp}")
+            logger.info(
+                f"收到 SES 事件 - Type: {event_type}, MessageId: {message_id}, Timestamp: {timestamp}")
 
             # 转发到自建 API
             forward_to_api(ses_event, event_type)
@@ -149,7 +152,8 @@ def forward_to_api(ses_event, event_type):
         # 检查响应状态
         response.raise_for_status()
 
-        logger.info(f"成功转发事件到 API - Type: {event_type}, Status: {response.status_code}")
+        logger.info(
+            f"成功转发事件到 API - Type: {event_type}, Status: {response.status_code}")
 
     except requests.exceptions.Timeout as e:
         logger.error(f"API 请求超时 ({Config.API_TIMEOUT}s): {str(e)}")
@@ -157,5 +161,13 @@ def forward_to_api(ses_event, event_type):
     except requests.exceptions.RequestException as e:
         logger.error(f"API 请求失败: {str(e)}")
         if hasattr(e, 'response') and e.response is not None:
-            logger.error(f"响应状态码: {e.response.status_code}, 响应内容: {e.response.text}")
+            logger.error(
+                f"响应状态码: {e.response.status_code}, 响应内容: {e.response.text}")
         raise
+
+
+if __name__ == '__main__':
+    with open('../tests/test_event.json') as f:
+        event = json.load(f)
+        result = lambda_handler(event, None)
+        print(result)
