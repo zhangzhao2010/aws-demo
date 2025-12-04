@@ -81,7 +81,7 @@ def process_sns_record(record):
         if message_type == 'Notification':
             # 解析 SES 事件数据
             ses_event = json.loads(sns_message.get('Message', '{}'))
-            event_type = ses_event.get('notificationType', 'unknown')
+            event_type = ses_event.get('eventType', 'unknown')
 
             logger.info(
                 f"收到 SES 事件 - Type: {event_type}, MessageId: {message_id}, Timestamp: {timestamp}")
